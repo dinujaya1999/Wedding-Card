@@ -1,0 +1,665 @@
+.opening {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(ellipse at 50% 43%, rgba(255, 255, 255, 0.92), transparent 58%),
+    radial-gradient(ellipse at 4% 4%, rgba(217, 163, 151, 0.16), transparent 38%),
+    radial-gradient(ellipse at 98% 96%, rgba(201, 154, 80, 0.16), transparent 42%),
+    var(--color-background);
+
+  overflow: hidden;
+}
+
+/* --------------------------------------------------
+   Background
+-------------------------------------------------- */
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(ellipse at 18% 22%, rgba(201, 154, 80, 0.11) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 81% 68%, rgba(201, 154, 80, 0.09) 0 1px, transparent 2px);
+  background-size: 31px 37px, 43px 47px;
+  opacity: 0.45;
+
+  z-index: 0;
+  background-image: url("/images/hero-champagne-floral.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+
+.heavenDoor {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: -24%;
+  width: min(88vw, 900px);
+  height: 130vh;
+  border: 2px solid rgba(255, 229, 166, .9);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 36%, rgba(255,255,245,.98), rgba(255,224,158,.72) 20%, rgba(255,159,65,.2) 50%, transparent 72%);
+  box-shadow: 0 0 20px rgba(255, 229, 166, .95), inset 0 0 34px rgba(255, 225, 166, .78), 0 -20px 80px rgba(255, 190, 99, .52);
+  transform: translateX(-50%) scale(.28);
+  transform-origin: 50% 65%;
+  mix-blend-mode: screen;
+}
+
+.heavenDoor::before {
+  content: "";
+  position: absolute;
+  inset: 18px 18px 0;
+  border: 1px solid rgba(255, 255, 229, .86);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 38% 38% 0 0;
+  box-shadow: 0 0 34px rgba(255, 245, 203, .82);
+}
+
+.heavenDoor::after {
+  content: "";
+  position: absolute;
+  inset: 12% 8% 0;
+  background: radial-gradient(ellipse at 50% 25%, rgba(255,255,255,.98), rgba(255,245,210,.72) 28%, transparent 68%);
+  filter: blur(22px);
+}
+
+.heavenDoorOpen {
+  animation: heavenGate 3.1s cubic-bezier(.16, .76, .2, 1) both;
+}
+
+@keyframes heavenGate {
+  0% { opacity: 0; transform: translateX(-50%) scale(.2); filter: brightness(1); }
+  22% { opacity: 1; }
+  62% { opacity: .88; transform: translateX(-50%) scale(1.05); filter: brightness(1.45); }
+  100% { opacity: 0; transform: translateX(-50%) scale(1.7); filter: brightness(1.8); }
+}
+
+/* A warm ignition blooms from the seal and carries the reveal into the page. */
+.firelight {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(255, 245, 207, 0.98) 0 2%, rgba(255, 183, 91, 0.82) 8%, rgba(224, 76, 24, 0.28) 26%, transparent 56%),
+    radial-gradient(ellipse at 50% 100%, rgba(111, 34, 18, 0.18), transparent 58%);
+  mix-blend-mode: screen;
+}
+
+.firelightActive {
+  visibility: visible;
+  animation: fireBloom 4.4s cubic-bezier(0.18, 0.72, 0.22, 1) forwards;
+}
+
+/* The broken seal throws a curling ring and a tall flame plume. */
+.firelight::before,
+.firelight::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.firelight::before {
+  width: min(58vw, 76vh);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(from 12deg, transparent 0 8%, rgba(255, 115, 28, .9) 11%, rgba(255, 231, 157, .96) 13%, transparent 17% 25%, rgba(227, 68, 19, .9) 29%, rgba(255, 218, 125, .9) 31%, transparent 35% 48%, rgba(255, 136, 29, .86) 52%, rgba(255, 234, 163, .9) 54%, transparent 59% 71%, rgba(222, 62, 17, .84) 76%, rgba(255, 218, 125, .9) 78%, transparent 83%);
+  -webkit-mask: radial-gradient(circle, transparent 0 37%, #000 43% 52%, transparent 62%);
+  mask: radial-gradient(circle, transparent 0 37%, #000 43% 52%, transparent 62%);
+  filter: blur(5px) drop-shadow(0 0 18px rgba(255, 113, 27, .9));
+  transform: translate(-50%, -50%) scale(.16) rotate(-24deg);
+}
+
+.firelight::after {
+  width: clamp(180px, 35vw, 480px);
+  height: clamp(260px, 49vh, 520px);
+  background:
+    radial-gradient(ellipse at 50% 82%, rgba(255, 255, 205, .96) 0 4%, rgba(255, 187, 65, .9) 13%, rgba(255, 92, 20, .72) 27%, transparent 66%),
+    radial-gradient(ellipse at 26% 54%, rgba(255, 146, 29, .72), transparent 42%),
+    radial-gradient(ellipse at 72% 44%, rgba(255, 117, 22, .68), transparent 42%);
+  filter: blur(10px) drop-shadow(0 0 24px rgba(255, 105, 20, .8));
+  transform: translate(-50%, -57%) scale(.28, .18);
+}
+
+.firelightActive::before {
+  animation: sealFireRing 2.25s cubic-bezier(.16, .7, .24, 1) 80ms both;
+}
+
+.firelightActive::after {
+  animation: phoenixFlare 2.8s cubic-bezier(.2, .7, .24, 1) 1550ms both;
+}
+
+.phoenix {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 54%;
+  width: clamp(210px, 39vw, 510px);
+  height: auto;
+  opacity: 0;
+  overflow: visible;
+  transform: translate(-50%, -42%) scale(.2);
+  filter: drop-shadow(0 0 22px rgba(255, 107, 20, .85));
+}
+
+.firelightActive .phoenix {
+  animation: phoenixRise 2.15s cubic-bezier(.18, .72, .2, 1) 1550ms both;
+}
+
+@keyframes phoenixRise {
+  0% { opacity: 0; transform: translate(-50%, 5%) scale(.18) rotate(-5deg); }
+  16% { opacity: .92; }
+  43% { opacity: 1; transform: translate(-50%, -38%) scale(.88) rotate(2deg); }
+  67% { opacity: .92; transform: translate(-50%, -70%) scale(1.04) rotate(-2deg); }
+  100% { opacity: 0; transform: translate(-50%, -128%) scale(1.34) rotate(3deg); }
+}
+
+@keyframes sealFireRing {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(.12) rotate(-24deg); }
+  18% { opacity: 1; }
+  66% { opacity: .9; transform: translate(-50%, -50%) scale(1.22) rotate(28deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.65) rotate(74deg); }
+}
+
+@keyframes phoenixFlare {
+  0% { opacity: 0; transform: translate(-50%, -57%) scale(.18, .12) rotate(0); }
+  18% { opacity: .95; }
+  48% { opacity: .84; transform: translate(-50%, -64%) scale(1, .82) rotate(-3deg); }
+  72% { opacity: .66; transform: translate(-50%, -81%) scale(1.25, 1.08) rotate(4deg); }
+  100% { opacity: 0; transform: translate(-50%, -105%) scale(1.5, 1.2) rotate(-3deg); }
+}
+
+.firelight span {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff1b0;
+  box-shadow: 0 0 9px 3px rgba(255, 151, 43, 0.82);
+  opacity: 0;
+}
+
+.firelight span:nth-of-type(3n) {
+  --ember-x: -30vw; --ember-y: -32vh;
+  --ember-mid-x: -12vw; --ember-mid-y: -24vh;
+  --ember-dance-x: -24vw; --ember-dance-y: -38vh;
+}
+.firelight span:nth-of-type(3n + 1) {
+  --ember-x: 32vw; --ember-y: -27vh;
+  --ember-mid-x: 14vw; --ember-mid-y: -20vh;
+  --ember-dance-x: 25vw; --ember-dance-y: -36vh;
+}
+.firelight span:nth-of-type(3n + 2) {
+  --ember-x: 4vw; --ember-y: -45vh;
+  --ember-mid-x: 9vw; --ember-mid-y: -23vh;
+  --ember-dance-x: -10vw; --ember-dance-y: -38vh;
+}
+.firelight span:nth-of-type(4n) { width: 2px; height: 2px; }
+
+.firelightActive span {
+  animation: sparkDance 2.5s cubic-bezier(.16, .7, .24, 1) both;
+  animation-delay: calc(var(--ember-index, 0) * 45ms + 180ms);
+}
+
+.firelight span:nth-of-type(1) { --ember-index: 1; }
+.firelight span:nth-of-type(2) { --ember-index: 2; }
+.firelight span:nth-of-type(3) { --ember-index: 3; }
+.firelight span:nth-of-type(4) { --ember-index: 4; }
+.firelight span:nth-of-type(5) { --ember-index: 5; }
+.firelight span:nth-of-type(6) { --ember-index: 6; }
+.firelight span:nth-of-type(7) { --ember-index: 7; }
+.firelight span:nth-of-type(8) { --ember-index: 8; }
+.firelight span:nth-of-type(9) { --ember-index: 9; }
+.firelight span:nth-of-type(10) { --ember-index: 10; }
+.firelight span:nth-of-type(11) { --ember-index: 11; }
+.firelight span:nth-of-type(12) { --ember-index: 12; }
+.firelight span:nth-of-type(13) { --ember-index: 13; }
+.firelight span:nth-of-type(14) { --ember-index: 14; }
+.firelight span:nth-of-type(15) { --ember-index: 15; }
+.firelight span:nth-of-type(16) { --ember-index: 16; }
+.firelight span:nth-of-type(17) { --ember-index: 17; }
+.firelight span:nth-of-type(18) { --ember-index: 18; }
+.firelight span:nth-of-type(19) { --ember-index: 19; }
+.firelight span:nth-of-type(20) { --ember-index: 20; }
+.firelight span:nth-of-type(21) { --ember-index: 21; }
+.firelight span:nth-of-type(22) { --ember-index: 22; }
+.firelight span:nth-of-type(23) { --ember-index: 23; }
+.firelight span:nth-of-type(24) { --ember-index: 24; }
+.firelight span:nth-of-type(25) { --ember-index: 25; }
+.firelight span:nth-of-type(26) { --ember-index: 26; }
+.firelight span:nth-of-type(27) { --ember-index: 27; }
+.firelight span:nth-of-type(28) { --ember-index: 28; }
+.firelight span:nth-of-type(29) { --ember-index: 29; }
+.firelight span:nth-of-type(30) { --ember-index: 30; }
+
+@keyframes fireBloom {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  34% { opacity: 0.78; }
+  68% { opacity: 0.52; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes sparkDance {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(.25) rotate(0); }
+  9% { opacity: 1; transform: translate(-50%, -1vh) scale(1.35) rotate(35deg); }
+  28% { opacity: 1; transform: translate(calc(-50% + var(--ember-mid-x)), var(--ember-mid-y)) scale(.9) rotate(105deg); }
+  45% { opacity: .9; transform: translate(calc(-50% + var(--ember-dance-x)), calc(var(--ember-dance-y) + 2vh)) scale(1.15) rotate(190deg); }
+  63% { opacity: .9; transform: translate(calc(-50% + var(--ember-mid-x) + var(--ember-mid-x)), calc(var(--ember-mid-y) - 3vh)) scale(.72) rotate(270deg); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--ember-x)), var(--ember-y)) scale(.08) rotate(430deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firelightActive,
+  .firelightActive::before,
+  .firelightActive::after,
+  .firelightActive span,
+  .firelightActive .phoenix {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+
+  .heavenDoorOpen { animation-duration: 1ms; }
+}
+
+.sideArch {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: max(2.5vw, calc(50% - 670px));
+  width: clamp(170px, 22vw, 330px);
+  height: min(72vh, 680px);
+  min-height: 390px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.sideArchRight {
+  right: max(2.5vw, calc(50% - 670px));
+  left: auto;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.archFrame {
+  position: absolute;
+  inset: 0 0 0 0;
+  border: 1px solid rgba(151, 112, 88, 0.38);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 34% 34% 0 0;
+}
+
+.archFrame::before {
+  position: absolute;
+  content: "";
+  inset: 12px 12px 0;
+  border: 1px solid rgba(151, 112, 88, 0.2);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0 / 34% 34% 0 0;
+}
+
+.floralSprig {
+  position: absolute;
+  left: 18%;
+  bottom: 4%;
+  width: 68%;
+  height: 46%;
+  opacity: 0.78;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left bottom;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 190' fill='none'%3E%3Cpath d='M15 184C53 150 71 111 91 72C105 44 128 24 164 8' stroke='%238b9b79' stroke-width='1.5'/%3E%3Cpath d='M62 135C37 112 21 114 9 119C24 139 42 145 62 135ZM86 94C65 68 48 68 35 71C47 93 66 103 86 94ZM116 52C104 29 89 24 76 25C82 47 96 59 116 52ZM75 118C93 98 109 98 121 102C108 121 92 128 75 118ZM105 74C126 52 143 53 155 58C141 77 124 84 105 74ZM139 35C158 17 174 18 184 23C171 39 155 45 139 35Z' fill='%23a9b393' fill-opacity='.48' stroke='%238b9b79' stroke-width='1.2'/%3E%3Ccircle cx='164' cy='8' r='5' fill='%23c78378'/%3E%3Ccircle cx='164' cy='8' r='10' stroke='%23c78378' stroke-opacity='.5'/%3E%3Ccircle cx='186' cy='27' r='3.5' fill='%23d6ae83'/%3E%3Ccircle cx='145' cy='17' r='3' fill='%23d6ae83'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------
+   Content
+-------------------------------------------------- */
+
+.content {
+  position: relative;
+  z-index: 1;
+
+  width: min(90%, 900px);
+
+  text-align: center;
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+
+  color: var(--color-muted);
+}
+
+.content h1 {
+  margin-bottom: 45px;
+
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 70px);
+  font-weight: 400;
+  line-height: 0.95;
+
+  color: var(--color-text);
+}
+
+   /* Envelope */
+/* --------------------------------------------------  */
+
+.envelopeWrapper {
+  position: relative;
+  width: min(860px, 98vw);
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.55;
+  perspective: 1200px;
+  overflow: visible;
+}
+
+.envelopeBody {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.invitationCard {
+  position: absolute;
+  width: 52%;
+  left: 24%;
+  top: 15%;
+  z-index: 1;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(23, 33, 63, 0.16));
+  transform: translateY(0) scale(1);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.envelopeFlap {
+  position: absolute;
+  width: 85%;
+  left: 7%;
+  top: -1%;
+  z-index: 5;
+  transform-origin: top center;
+  backface-visibility: hidden;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.waxSeal {
+  position: absolute;
+  width: 13%;
+  left: 43.5%;
+  top: 38%;
+  z-index: 6;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 6px 8px rgba(23, 33, 63, 0.18));
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.waxSeal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sealPieceLeft,
+.sealPieceRight {
+  position: absolute;
+  inset: 0;
+  background: url("/images/invitation/wax-seal.png") center / contain no-repeat;
+  opacity: 0;
+}
+
+.sealPieceLeft {
+  clip-path: polygon(0 0, 54% 0, 46% 24%, 55% 39%, 43% 54%, 53% 72%, 43% 100%, 0 100%);
+}
+
+.sealPieceRight {
+  clip-path: polygon(54% 0, 100% 0, 100% 100%, 43% 100%, 53% 72%, 43% 54%, 55% 39%, 46% 24%);
+}
+
+.sealCrackLine {
+  position: absolute;
+  inset: 13% 0 13%;
+  opacity: 0;
+  background: linear-gradient(108deg, transparent 0 47%, rgba(74, 32, 30, 0.95) 48% 49%, rgba(255, 220, 197, 0.85) 50% 51%, transparent 52%);
+  clip-path: polygon(45% 0, 58% 23%, 43% 43%, 59% 66%, 42% 100%, 48% 100%, 65% 66%, 50% 43%, 65% 23%, 51% 0);
+}
+
+.sealLift {
+  transform: translateY(-22%) translateZ(100px) scale(2);
+}
+
+.sealCrack {
+  animation: sealTremble 0.12s linear 3 forwards;
+}
+
+.sealCrack .sealCrackLine {
+  opacity: 1;
+}
+
+.waxSeal.sealBreak img,
+.waxSeal.sealBreak .sealCrackLine {
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.waxSeal.sealBreak .sealPieceLeft,
+.waxSeal.sealBreak .sealPieceRight {
+  opacity: 1;
+  transition: transform 0.38s cubic-bezier(0.2, 0.75, 0.25, 1), opacity 0.2s ease;
+}
+
+.waxSeal.sealBreak {
+  transform: translateY(-22%) translateZ(100px) scale(2);
+}
+
+.waxSeal.sealBreak .sealPieceLeft {
+  transform: translate(-42%, -34%) rotate(-24deg);
+}
+
+.waxSeal.sealBreak .sealPieceRight {
+  transform: translate(42%, -34%) rotate(24deg);
+}
+
+@keyframes sealTremble {
+  0%, 100% { transform: translateY(-22%) translateZ(100px) scale(2) rotate(0); }
+  25% { transform: translateY(-22%) translateZ(100px) scale(2) rotate(-4deg); }
+  75% { transform: translateY(-22%) translateZ(100px) scale(2) rotate(4deg); }
+}
+
+/* --------------------------------------------------
+   Open invitation text
+-------------------------------------------------- */
+
+.openText {
+  margin-top: 24px;
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: var(--color-muted);
+
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* --------------------------------------------------
+   Opening animation
+-------------------------------------------------- */
+
+.ignition {}
+
+.openingActive .envelopeFlap {
+  transform: rotateX(-105deg);
+  transition: transform 3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.openingActive .waxSeal {
+  transform: translateY(-22%) translateZ(100px) scale(1.42);
+}
+
+.transitioning .invitationCard {
+  z-index: 7;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  animation: cardUnfurl 3s cubic-bezier(0.15, 1, 0.26, 1) forwards;
+}
+
+@keyframes cardUnfurl {
+  0% { transform: translateY(18%) rotateX(72deg) rotateZ(-8deg) scale(0.82, 0.48); }
+  35% { transform: translateY(-13%) rotateX(18deg) rotateZ(4deg) scale(1.04, 0.92); }
+  55% { transform: translateY(-20%) rotateX(0deg) rotateZ(-2deg) scale(1.08); }
+  68% { transform: translateY(-20%) rotateX(0deg) rotateZ(1deg) scale(1.06); }
+  100% { transform: translateY(-20%) rotateX(0deg) rotateZ(0deg) scale(1.06); }
+}
+
+.transitioning .envelopeBody,
+.transitioning .envelopeFlap,
+.transitioning .waxSeal {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* --------------------------------------------------
+   Opening finished
+-------------------------------------------------- */
+
+.finished {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+
+/* Golden sparks released from the wax seal */
+.sealSparks {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sealSparksActive { opacity: 1; }
+
+.sealSparks span {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: var(--spark-size);
+  height: var(--spark-size);
+  border-radius: 50%;
+  background: #fff5c7;
+  box-shadow: 0 0 4px 1px rgba(255, 220, 133, 0.95), 0 0 12px 3px rgba(226, 165, 74, 0.65);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  animation: sealSparkBurst 1.35s cubic-bezier(0.16, 0.72, 0.24, 1) var(--spark-delay) both;
+}
+
+.sealSparksActive span { animation-play-state: running; }
+
+@keyframes sealSparkBurst {
+  0% { left: 50%; top: 48%; opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  12% { opacity: 1; transform: translate(-50%, -50%) scale(1.5); }
+  65% { opacity: 0.9; }
+  100% { left: calc(50% + var(--spark-x)); top: calc(48% + var(--spark-y)); opacity: 0; transform: translate(-50%, -50%) scale(0.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sealSparksActive span { animation: none; opacity: 0; }
+}
+
+/* --------------------------------------------------
+   Mobile
+-------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .sideArch {
+    width: 24vw;
+    height: 44vh;
+    min-height: 260px;
+    top: 43%;
+    opacity: 0.5;
+  }
+
+  .sideArchRight {
+    right: 2vw;
+    left: auto;
+  }
+
+  .floralSprig {
+    left: 4%;
+    width: 100%;
+    height: 37%;
+  }
+
+  .content {
+    width: 94%;
+  }
+
+  .content h1 {
+    margin-bottom: 35px;
+
+    font-size: clamp(38px, 10vw, 52px);
+  }
+
+  .envelopeWrapper {
+    width: min(500px, 88vw);
+  }
+
+  .openText {
+    margin-top: 18px;
+  }
+}
+
+
+
